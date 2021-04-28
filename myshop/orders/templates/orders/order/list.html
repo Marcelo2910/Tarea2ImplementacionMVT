@@ -9,7 +9,7 @@
     
 	<table class="table">
         <thead class="table-dark">
-            <th>ID</th>
+            <th>Order No.</th>
             <th>Product</th>
 			<th>Date</th>
             <th>Total</th>
@@ -24,9 +24,9 @@
 				<td>{{o.order.created}}</td>
                 <td>{{o.price}}</td>
 				{% if o.diff.days == 0 %}
-				<td><a href="{% url 'order_cancel' o.id %}" class="btn btn-danger">Cancelar</a></td>
+				<td><a href="{% url 'order_cancel' o.id %}" class="btn btn-danger">Cancel</a></td>
 				{% else %}
-				<td><a class="btn btn-danger disabled">No se puede cancelar D:</a></td>
+				<td><a class="btn btn-danger disabled">Can not cancel D:</a></td>
 				{% endif %}
             </tr>
             {% endfor %}
