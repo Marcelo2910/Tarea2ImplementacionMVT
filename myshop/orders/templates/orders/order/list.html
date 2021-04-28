@@ -1,0 +1,36 @@
+{% extends "shop/base.html" %}
+
+{% block title %}
+    Cancel
+{% endblock %}
+
+{% block content %}
+    <h1>Cancel Order</h1>
+    
+	<table class="table">
+        <thead class="table-dark">
+            <th>ID</th>
+            <th>Product</th>
+			<th>Date</th>
+            <th>Total</th>
+			<th>Cancel</th>
+        </thead>
+        <tbody>
+
+            {% for o in order %}
+            <tr>
+                <td>{{o.order.id}}</td>
+                <td>{{o.product.name}}</td>
+				<td>{{o.order.created}}</td>
+                <td>{{o.price}}</td>
+				{% if o.diff.days == 0 %}
+				<td><a href="{% url 'order_cancel' o.id %}" class="btn btn-danger">Cancelar</a></td>
+				{% else %}
+				<td><a class="btn btn-danger disabled">No se puede cancelar D:</a></td>
+				{% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
